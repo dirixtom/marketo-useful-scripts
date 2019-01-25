@@ -1,13 +1,14 @@
 // /* ! marketo-useful-scripts.js v0.2.0 | MIT License | https://github.com/dirixtom/marketo-useful-scripts.js | https://codepen.io/TomDirix/ */
 
-// If ${ABC} is defined in comments, where ABC can be whatever, a Marketo String Variable is recommended
+// If ${var} is defined in comments, where ABC can be whatever, a Marketo String Variable is recommended
+// Content after --- is the recommended method to initiate the function
 
 // ------------------------- //
 // -------- GENERAL -------- //
 // ------------------------- //
 
 // Hard redirect if not on certain page
-// replace("marketodesigner", "${url}", ${time});
+// --- replace("marketodesigner", "${url}", ${time});
 function replace(s, u, t) {
 	if (document.location.href.indexOf(s) === -1){
 		window.setTimeout(function(){
@@ -17,7 +18,7 @@ function replace(s, u, t) {
 }
 
 // Soft redirect if not on certain page
-// redirect("marketodesigner", "${url}", ${time});
+// --- redirect("marketodesigner", "${url}", ${time});
 function redirect(s, u, t) {
 	if (document.location.href.indexOf(s) === -1){
 		window.setTimeout(function(){
@@ -27,7 +28,7 @@ function redirect(s, u, t) {
 }
 
 // Create cookie
-// setCookie("cookiename", "content", 30);
+// --- setCookie("cookiename", "content", 30);
 function setCookie(cn, cv, ed) {
 	let d = new Date(),
 			expires = "expires=" + d.toGMTString();
@@ -37,7 +38,7 @@ function setCookie(cn, cv, ed) {
 }
 
 // Read cookie value
-// getCookie("cookiename");
+// --- getCookie("cookiename");
 function getCookie(cn) {
 	let name = cn + "=",
 			decodedCookie = decodeURIComponent(document.cookie),
@@ -59,10 +60,13 @@ function getCookie(cn) {
 // --------- FORMS --------- //
 // ------------------------- //
 
-// Preference center unsubscribe checkbox functionality, unchecks all checkboxes other when unsubscribe is checked
+// Recommended to use the Marketo Forms 2 API to make sure your form was loaded in correctly before the initiating the function
 // MktoForms2.whenReady(function(form) {
-// 	uncheck("Unsubscribed");
-// });
+//		Your function here
+// };
+
+// Preference center unsubscribe checkbox functionality, unchecks all checkboxes other when unsubscribe is checked
+// --- uncheck("Unsubscribed");
 function uncheck(in) {
 	let checkboxes = document.querySelectorAll('input[type=checkbox]:not([name=' + in + '])'),
 			unsubInput = document.querySelector('input[name=' + in + ']');
@@ -89,9 +93,7 @@ function uncheck(in) {
 }
 
 // Add hidden field to form from cookie content
-// MktoForms2.whenReady(function(form) {
-// 	addCookieField("fieldAPIname", "cookiename");
-// });
+// --- addCookieField("fieldAPIname", "cookiename");
 function addCookieField(an, cn) {
 	let decodedCookie = decodeURIComponent(document.cookie);
 	 form.addHiddenFields({
