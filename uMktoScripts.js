@@ -1,7 +1,7 @@
 // /* ! marketo-useful-scripts.js v0.2.0 | MIT License | https://github.com/dirixtom/marketo-useful-scripts.js | https://codepen.io/TomDirix/ */
 
 // If ${var} is defined in comments, where ABC can be whatever, a Marketo String Variable is recommended
-// Content after --- is the recommended method to initiate the function
+// Content after --- is the recommended method to initiate the function (will be replaced by a Codepen link later)
 
 // ------------------------- //
 // -------- GENERAL -------- //
@@ -90,6 +90,12 @@ function uncheck(in) {
 			}
 		}
 	};
+}
+
+// Lock Marketo form field
+// --- lockField("Email");
+function lockField(i) {
+	document.getElementById(i).disabled = true;
 }
 
 // Add hidden field to form from cookie content
